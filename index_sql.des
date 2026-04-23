@@ -1,0 +1,61 @@
+//aula 1 - SQL DDL (Data Definition Language)
+// Criação da tabela "turma"
+create table turma (
+    cod_turma NUMBER(2) PRIMARY KEY,
+    desc_turma VARCHAR2(30)
+);
+
+//Alterar a tabela "turma" para adicionar a coluna "periodo"
+ALTER TABLE turma
+add periodo VARCHAR2(15);
+
+//descrever a estrutura da tabela "turma"
+DESCRIBE turma;
+
+//DROPAR a tabela "turma" (excluir a tabela e os dados contidos nela);
+DROP TABLE turma;
+
+// Aula 2 - SQL DML (Data Manipulation Language) (Manipulação de Dados);
+//são os comandos para inserir, atualizar, excluir e consultar dados em uma tabela
+// o famoso CRUD (Create, Read, Update, Delete);
+//SELECT - para consultar dados em uma tabela
+SELECT * FROM turma; -- seleciona todas as colunas e linhas da tabela "turma"
+SELECT cod_turma, desc_turma FROM turma; -- seleciona apenas as colunas "cod_turma" e "desc_turma" da tabela "turma"
+SELECT * FROM turma WHERE cod_turma = 1; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" é igual a 1
+SELECT * FROM turma WHERE desc_turma LIKE 'A%'; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "desc_turma" começa com a letra "A"
+SELECT * FROM turma WHERE cod_turma IN (1, 2, 3); -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" é igual a 1, 2 ou 3
+SELECT * FROM turma WHERE cod_turma BETWEEN 1 AND 3; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" está entre 1 e 3
+SELECT * FROM turma WHERE cod_turma IS NULL; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" é nulo
+SELECT * FROM turma WHERE cod_turma IS NOT NULL; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" não é nulo
+SELECT * FROM turma WHERE cod_turma > 1; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" é maior que 1
+SELECT * FROM turma WHERE cod_turma < 3; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" é menor que 3
+SELECT * FROM turma WHERE cod_turma >= 1; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" é maior ou igual a 1
+SELECT * FROM turma WHERE cod_turma <= 3; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" é menor ou igual a 3
+SELECT * FROM turma WHERE cod_turma <> 2; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" é diferente de 2
+SELECT * FROM turma WHERE cod_turma != 2; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" é diferente de 2
+SELECT * FROM turma WHERE cod_turma = 1 AND desc_turma = 'A'; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" é igual a 1 e o valor da coluna "desc_turma" é igual a 'A'
+SELECT * FROM turma WHERE cod_turma = 1 OR desc_turma = 'A'; -- seleciona todas as colunas e linhas da tabela "turma" onde o valor da coluna "cod_turma" é igual a 1 ou o valor da coluna "desc_turma" é igual a 'A'
+
+// INSERT - para inserir dados em uma tabela
+INSERT INTO turma (cod_turma, desc_turma, periodo) VALUES (1, 'A', 'Manhã'); -- insere um novo registro na tabela "turma" com os valores especificados para as colunas "cod_turma", "desc_turma" e "periodo"
+INSERT INTO turma (cod_turma, desc_turma) VALUES (2, 'B'); -- insere um novo registro na tabela "turma" com os valores especificados para as  colunas "cod_turma" e "desc_turma", deixando a coluna "periodo" com valor nulo
+INSERT INTO turma (cod_turma, desc_turma, periodo) VALUES (3, 'C', 'Tarde'); -- insere um novo registro na tabela "turma" com os valores especificados para as colunas "cod_turma", "desc_turma" e "period        o"
+INSERT INTO turma (cod_turma, desc_turma, periodo) VALUES (4, 'D', 'Noite'); -- insere um novo registro na tabela "turma" com os valores especificados para as colunas "cod_turma", "desc_turma" e "periodo"
+INSERT INTO turma (cod_turma, desc_turma, periodo) VALUES (5, 'E', 'Manhã'); -- insere um novo registro na tabela "turma" com os valores especificados para as colunas "cod_turma", "desc_turma" e "periodo"
+INSERT INTO turma (cod_turma, desc_turma, periodo) VALUES (6, 'F', 'Tarde'); -- insere um novo registro na tabela "turma" com os valores especificados para as colunas "cod_turma", "desc_turma" e "period  o"
+INSERT INTO turma (cod_turma, desc_turma, periodo) VALUES (7, 'G', 'Noite'); -- insere um novo registro na tabela "turma" com os valores especificados para as colunas "cod_turma", "desc_turma" e "periodo"
+INSERT INTO turma (cod_turma, desc_turma, periodo) VALUES (8, 'H', 'Manhã'); -- insere um novo registro na tabela "turma" com os valores especificados para as colunas "cod_turma", "desc_turma" e "periodo"
+INSERT INTO turma (cod_turma, desc_turma, periodo) VALUES (9, 'I', 'Tarde'); -- insere um novo registro na tabela "turma" com os valores especificados para as colunas "cod_turma", "desc_turma" e "periodo"
+INSERT INTO turma (cod_turma, desc_turma, periodo) VALUES (10, 'J', 'Noite'); -- insere um novo registro na tabela "turma" com os valores especificados para as colunas "cod_turma", "desc_turma" e "periodo"
+
+
+//Aula 3 - SQL DML (Data Manipulation Language) - UPDATE e DELETE
+
+//INSERT - para inserir dados em uma tabela
+INSERT INTO ALUNO VALUES (1, 'Davi Favaro', default, 10);
+INSERT INTO ALUNO VALUES (2, 'Maria Silva', default, 9);
+
+//UPDATE - para atualizar dados em uma tabela
+UPDATE ALUNO SET nome = 'Davi Favaro da Silva' WHERE cod_aluno = 1; -- atualiza o nome do aluno com cod_aluno igual a 1 para 'Davi Favaro da Silva'
+UPDATE ALUNO SET nota = 8 WHERE cod_aluno = 2; -- atualiza a nota do aluno com cod_aluno igual a 2 para 8
+UPDATE ALUNO SET nome = 'Maria Silva', nota = 9 WHERE cod_aluno = 2; -- atualiza o nome e a nota do aluno com cod_aluno igual a 2 para 'Maria Silva' e 9, respectivamente 
