@@ -1,0 +1,187 @@
+-- comando if-then-else
+DECLARE
+ A NUMBER;
+ B NUNBER;
+BEGIN
+  A := 10;
+  B := 20;
+  IF A > B THEN
+    DBMS_OUTPUT.PUT_LINE('A é maior que B');
+  ELSIF A < B THEN
+    DBMS_OUTPUT.PUT_LINE('A é menor que B');
+  ELSE  
+    DBMS_OUTPUT.PUT_LINE('A é igual a B');
+  END IF;
+END;
+
+--COMANDO CASE
+DECLARE
+  A NUMBER;
+BEGIN
+  A := 10;
+  CASE A
+    WHEN 1 THEN
+      DBMS_OUTPUT.PUT_LINE('A é igual a 1');
+    WHEN 10 THEN
+      DBMS_OUTPUT.PUT_LINE('A é igual a 10');
+    ELSE  
+      DBMS_OUTPUT.PUT_LINE('A é diferente de 1 e 10');
+  END CASE;
+END;
+
+IF A = valor1 THEN
+  -- código para valor1
+ELSIF A = valor2 THEN
+  -- código para valor2
+ELSE
+  -- código para outros valores
+END IF;
+
+
+--Case de expressão
+dia NUMBER;
+nome VARCHAR2(100);
+BEGIN
+  dia := 3;
+  nome := CASE dia
+    WHEN 1 THEN 'Domingo'
+    WHEN 2 THEN 'Segunda-feira'
+    WHEN 3 THEN 'Terça-feira'
+    WHEN 4 THEN 'Quarta-feira'  
+    WHEN 5 THEN 'Quinta-feira'
+    WHEN 6 THEN 'Sexta-feira'
+    WHEN 7 THEN 'Sábado'
+    ELSE 'Dia inválido'
+  END;
+  DBMS_OUTPUT.PUT_LINE('O dia da semana é: ' || nome);
+END;
+
+--COMANDO GOTO( desvios incondicionais)
+DECLARE
+  A NUMBER;
+BEGIN 
+  A := 10;
+  IF A > 5 THEN
+    GOTO label_maior;
+  ELSE
+    GOTO label_menor;
+  END IF;
+
+  <<label_maior>>
+  DBMS_OUTPUT.PUT_LINE('A é maior que 5');
+  GOTO fim;
+
+  <<label_menor>>
+  DBMS_OUTPUT.PUT_LINE('A é menor ou igual a 5');
+
+  <<fim>>
+END;
+
+DECLARE
+fatorial NUMBER: = 1;
+n NUMBER;
+i NUMBER;
+BEGIN
+  n: = 5; -- valor para calcular o fatorial
+  1 : = n;
+  << inicio_loop >>
+  IF i >= 1 THEN
+    fatorial := fatorial * i;
+    i := i - 1;
+    GOTO inicio_loop;
+  END IF;
+  DBMS_OUTPUT.PUT_LINE('O fatorial de ' || n || ' é: ' || fatorial);
+END;
+
+-- COMANDO LOOP
+DECLARE
+fatorial NUMBER := 1;
+n NUMBER;
+i NUMBER;
+BEGIN
+  n := 5; -- valor para calcular o fatorial 
+  i := n;
+  LOOP
+    IF i >= 1 THEN
+      fatorial := fatorial * i;
+      i := i - 1;
+    ELSE
+      EXIT; -- sai do loop quando i for menor que 1
+    END IF;
+    factorial := fatorial * i;
+    i := i - 1;
+  END LOOP;
+  DBMS_OUTPUT.PUT_LINE('O fatorial de ' || n || ' é: ' || fatorial);
+END;
+
+DECCLARE
+ ...
+ LOOP
+ <<r1>>
+  ...
+  IF condição1 THEN
+    ...
+    GOTO r1; -- volta para o início do loop
+  ELSIF condição2 THEN
+    ...
+    EXIT; -- sai do loop
+  END IF;
+  ...
+ END LOOP;
+END;
+
+-- COMANDO FOR
+DECLARE
+fatorial NUMBER := 1;
+n NUMBER;
+BEGIN
+  n := 5; -- valor para calcular o fatorial
+  FOR i IN REVERSE 1..n LOOP
+    fatorial := fatorial * i;
+  END LOOP;
+  DBMS_OUTPUT.PUT_LINE('O fatorial de ' || n || ' é: ' || fatorial);
+END;
+
+-- COMANDO WHILE
+DECLARE
+fatorial NUMBER := 1;
+n NUMBER;
+i NUMBER;
+BEGIN
+  n := 5; -- valor para calcular o fatorial
+  i := n;
+  WHILE i >= 1 LOOP
+    fatorial := fatorial * i;
+    i := i - 1;
+  END LOOP;
+  DBMS_OUTPUT.PUT_LINE('O fatorial de ' || n || ' é: ' || fatorial);
+END;
+
+WHILE condição LOOP
+  -- código a ser executado enquanto a condição for verdadeira
+  EXIT; -- para sair do loop
+  EXIT WHEN condição_de_saida; -- para sair do loop quando a condição_de_saida for verdadeira
+  CONTINUE; -- para pular o restante do código e iniciar a próxima iteração do loop
+  CONTINUE WHEN condição_de_continuacao; -- para pular o restante do código e iniciar a próxima iteração do loop quando a condição_de_continuacao for verdadeira
+  GOTO rótulo; -- para desviar para um rótulo específico
+END LOOP;
+
+LOOP 
+  -- código a ser executado repetidamente
+  EXIT; -- para sair do loop
+  EXIT WHEN condição_de_saida; -- para sair do loop quando a condição_de_saida for verdadeira
+  CONTINUE; -- para pular o restante do código e iniciar a próxima iteração do loop
+  CONTINUE WHEN condição_de_continuacao; -- para pular o restante do código e iniciar a próxima iteração do loop quando a condição_de_continuacao for verdadeira
+  GOTO rótulo; -- para desviar para um rótulo específico
+END LOOP;
+
+LOOP
+comandos...
+UNTIL condição_de_parada; -- para sair do loop quando a condição_de_parada for verdadeira
+END LOOP;
+
+-- TENÇAO: GOTO Pode deixar o programa mais pesado e difícil de entender, 
+-- especialmente em programas grandes ou complexos. O uso excessivo de GOTO pode
+-- levar a um código confuso e difícil de manter, conhecido como "código 
+-- espaguete". É recomendado usar estruturas de controle de fluxo mais claras,
+-- como IF, CASE, LOOP, FOR e WHILE, para melhorar a legibilidade e a manutenção do código.

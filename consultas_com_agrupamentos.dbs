@@ -1,0 +1,31 @@
+--Funções de Coluna
+select sysdate from dual;
+select to_char(sysdate, 'dd/mm/yyyy') from dual;
+select to_char(sysdate, 'dd-monTH-yy') from dual;
+select trunc(58.584, 1) from dual;
+select ename, lower(ename), upper(ename), initcap(ename) from scott.emp;
+
+--ordenação de colunas
+ --ordem alfabetica(a-z)
+ select ename, sal
+from scott.emp
+order by ename asc;
+
+--ordem decrescente(z-a)
+select ename, sal
+from scott.emp
+order by ename desc;
+
+--ordem por salário decrescente em mais de um departamento
+select ename, sal, deptno
+from scott.emp
+order by DEPTNO, sal desc;
+
+--Funções de Agregação(agrupamento)
+select  max(sal), min(sal), sum(sal)
+from scott.emp;
+select min(ename), max(ename) from scott.emp;
+
+--contagem de registros(linhas)
+SELECT count(*) from scott.emp
+SELECT count(comm) from scott.emp
